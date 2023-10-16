@@ -1,0 +1,47 @@
+name: temphumid_app
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment:
+  sdk: ">=3.1.3 <4.0.0"
+
+dependencies:
+  cupertino_icons: ^1.0.2
+  get: 4.6.6
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+  fonts:
+    - family: poorich
+      fonts:
+        - asset: fonts/poorich.ttf
+    #      - asset: fonts/Schyler-Italic.ttf
+    #        style: italic
+    - family: poppins
+      fonts:
+        - asset: fonts/poppins_black.ttf
+        - asset: fonts/poppins_blackitalic.ttf
+        - asset: fonts/poppins_bold.ttf
+        - asset: fonts/poppins_bolditalic.ttf
+        - asset: fonts/poppins_extrabold.ttf
+        - asset: fonts/poppins_extrabolditalic.ttf
+        - asset: fonts/poppins_light.ttf
+        - asset: fonts/poppins_lightitalic.ttf
+        - asset: fonts/poppins_extralight.ttf
+        - asset: fonts/poppins_extralightitalic.ttf
+        - asset: fonts/poppins_italic.ttf
+        - asset: fonts/poppins_medium.ttf
+        - asset: fonts/poppins_mediumitalic.ttf
+        - asset: fonts/poppins_semibold.ttf
+        - asset: fonts/poppins_semibolditalic.ttf
+        - asset: fonts/poppins_thin.ttf
+        - asset: fonts/poppins_thinitalic.ttf
