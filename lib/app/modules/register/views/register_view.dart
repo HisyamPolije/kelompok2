@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:temphumid_app/app/controllers/auth_controller.dart';
 import 'package:temphumid_app/app/routes/app_pages.dart';
 
 import '../controllers/register_controller.dart';
 
 class RegisterView extends GetView<RegisterController> {
-  const RegisterView({Key? key}) : super(key: key);
+  final authC = Get.find<AuthController>();
+  RegisterView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
         decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                colors: [Colors.blue, Colors.green])),
+            gradient: LinearGradient(begin: Alignment.topCenter, colors: [
+          Color.fromARGB(255, 21, 29, 48),
+          Color.fromARGB(255, 255, 169, 36)
+        ])),
         child: Column(
           children: <Widget>[
             const SizedBox(
@@ -48,7 +51,7 @@ class RegisterView extends GetView<RegisterController> {
               ),
             ),
             Container(
-              height: 602,
+              height: 753.5,
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -65,7 +68,7 @@ class RegisterView extends GetView<RegisterController> {
                       image: AssetImage('assets/images/logo.png'),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 100,
                     ),
                     Container(
                       //box username, email dan password
@@ -75,7 +78,7 @@ class RegisterView extends GetView<RegisterController> {
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: const [
                             BoxShadow(
-                                color: Colors.blue,
+                                color: Color.fromARGB(255, 255, 169, 36),
                                 blurRadius: 20,
                                 offset: Offset(0, 10)),
                           ]),
@@ -88,9 +91,11 @@ class RegisterView extends GetView<RegisterController> {
                               decoration: const BoxDecoration(
                                   border: Border(
                                       bottom: BorderSide(color: Colors.grey))),
-                              child: const TextField(
-                                decoration: InputDecoration(
+                              child: TextField(
+                                controller: controller.userC,
+                                decoration: const InputDecoration(
                                     hintText: 'Username',
+                                    prefixIcon: Icon(Icons.people),
                                     hintStyle: TextStyle(
                                         fontFamily: 'poppins',
                                         color: Colors.grey),
@@ -103,9 +108,11 @@ class RegisterView extends GetView<RegisterController> {
                               decoration: const BoxDecoration(
                                   border: Border(
                                       bottom: BorderSide(color: Colors.grey))),
-                              child: const TextField(
-                                decoration: InputDecoration(
+                              child: TextField(
+                                controller: controller.emailC,
+                                decoration: const InputDecoration(
                                     hintText: 'Email',
+                                    prefixIcon: Icon(Icons.email),
                                     hintStyle: TextStyle(
                                         fontFamily: 'poppins',
                                         color: Colors.grey),
@@ -118,9 +125,11 @@ class RegisterView extends GetView<RegisterController> {
                               decoration: const BoxDecoration(
                                   border: Border(
                                       bottom: BorderSide(color: Colors.grey))),
-                              child: const TextField(
-                                decoration: InputDecoration(
+                              child: TextField(
+                                controller: controller.passC,
+                                decoration: const InputDecoration(
                                     hintText: 'password',
+                                    prefixIcon: Icon(Icons.key),
                                     hintStyle: TextStyle(
                                         fontFamily: 'poppins',
                                         color: Colors.grey),
@@ -137,13 +146,13 @@ class RegisterView extends GetView<RegisterController> {
 
                     //Tombol Register
                     ElevatedButton(
-                        onPressed: () {
-                          Get.offAllNamed(Routes.LOGIN);
-                        },
+                        onPressed: () => authC.register(controller.userC.text,
+                            controller.emailC.text, controller.passC.text),
                         style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.cyan),
-                          fixedSize: MaterialStateProperty.all(Size(240, 50)),
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              const Color.fromARGB(255, 21, 29, 48)),
+                          fixedSize:
+                              MaterialStateProperty.all(const Size(240, 50)),
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
@@ -194,7 +203,7 @@ class RegisterView extends GetView<RegisterController> {
                     ),
 
                     const SizedBox(
-                      height: 50,
+                      height: 70,
                     ),
                     const Text(
                       'Copyright',

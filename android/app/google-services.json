@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "722695803890",
+    "project_id": "temphumid23",
+    "storage_bucket": "temphumid23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722695803890:android:f3441ba8cf5b569396916b",
+        "android_client_info": {
+          "package_name": "com.example.temphumid_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBKyUdBoIy1-shbGgnlCCJ5zamvO6UkUg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
