@@ -1,23 +1,14 @@
 import 'package:get/get.dart';
 
 class NavigationController extends GetxController {
-  //TODO: Implement NavigationController
+  var selectedIndex = 0.obs;
+  var textValue = 0.obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void changeIndex(int index) {
+    selectedIndex.value = index;
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void increaseVlaue() {
+    textValue.value++;
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

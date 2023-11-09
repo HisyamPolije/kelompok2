@@ -111,16 +111,35 @@ class LoginView extends GetView<LoginController> {
                               decoration: const BoxDecoration(
                                   border: Border(
                                       bottom: BorderSide(color: Colors.grey))),
-                              child: TextField(
-                                controller: controller.passC,
-                                decoration: const InputDecoration(
-                                    hintText: 'password',
-                                    prefixIcon: Icon(Icons.key),
-                                    hintStyle: TextStyle(
-                                        fontFamily: 'poppins',
-                                        color: Colors.grey),
-                                    border: InputBorder.none),
-                              ),
+                              child: Obx(() {
+                                return TextField(
+                                  controller: controller.passC,
+                                  obscureText:
+                                      !controller.isPasswordVisible.value,
+                                  decoration: InputDecoration(
+                                    hintText: controller.isPasswordEmpty.value
+                                        ? 'Password'
+                                        : '',
+                                    prefixIcon: const Icon(Icons.key),
+                                    suffixIcon: InkWell(
+                                      onTap: () {
+                                        controller.togglePasswordVisibility();
+                                      },
+                                      child: Icon(
+                                        controller.isPasswordVisible.value
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                    hintStyle: const TextStyle(
+                                      fontFamily: 'poppins',
+                                      color: Colors.grey,
+                                    ),
+                                    border: InputBorder.none,
+                                  ),
+                                );
+                              }),
                             )
                           ],
                         ),

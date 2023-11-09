@@ -33,7 +33,8 @@ class MyApp extends StatelessWidget {
           return GetMaterialApp(
             title: "Application",
             debugShowCheckedModeBanner: false,
-            initialRoute: snapshot.data != null ? Routes.HOME : Routes.LOGIN,
+            initialRoute:
+                snapshot.data != null ? Routes.NAVIGATION : Routes.LOGIN,
             getPages: AppPages.routes,
           );
         }
