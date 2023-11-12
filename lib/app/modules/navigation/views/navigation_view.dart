@@ -12,7 +12,7 @@ class NavigationView extends GetView<NavigationController> {
   NavigationView({Key? key}) : super(key: key);
 
   final screens = [
-    const TemperatureView(),
+    TemperatureView(),
     const HumidityView(),
     const HistoryView(),
     const AboutView()

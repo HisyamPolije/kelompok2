@@ -45,7 +45,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.TEMPERATURE,
-      page: () => const TemperatureView(),
+      page: () => TemperatureView(),
       binding: TemperatureBinding(),
     ),
     GetPage(

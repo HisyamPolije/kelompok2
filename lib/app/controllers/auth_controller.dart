@@ -20,6 +20,16 @@ class AuthController extends GetxController {
 
   void showSnackbar1(String message) {
     Get.snackbar(
+      'Cek Email',
+      message,
+      snackPosition: SnackPosition.TOP,
+      backgroundColor: Colors.green,
+      colorText: Colors.white,
+    );
+  }
+
+  void showSnackbar2(String message) {
+    Get.snackbar(
       'Peringatan',
       message,
       snackPosition: SnackPosition.TOP,
@@ -30,14 +40,24 @@ class AuthController extends GetxController {
 
   void register(String username, String email, String password) async {
     try {
-      await auth.createUserWithEmailAndPassword(
+      UserCredential myUser = await auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-      // Registrasi berhasil, tampilkan Snackbar
-      showSnackbar('Registrasi berhasil!');
+      await myUser.user!.sendEmailVerification();
+
+      showSnackbar1(
+          'Registrasi berhasil, Silahkan Cek Email Kami, Sudah Mengirim Verivikasi Email ke $email');
 
       Get.offAllNamed(Routes.LOGIN);
+      // if (myUser.user!.emailVerified) {
+
+      // } else {
+      //   Get.defaultDialog(
+      //       title: "Verifikasi Email",
+      //       middleText: "Kamu Perlu Memverifikasi Email Terlebih Dahulu");
+      // }
+      // Registrasi berhasil, tampilkan Snackbar
     } catch (e) {
       print('error accured $e');
       // Handle specific error messages
@@ -54,20 +74,33 @@ class AuthController extends GetxController {
             errorMessage = 'Format email tidak valid.';
             break;
         }
-        showSnackbar1(errorMessage);
+        showSnackbar2(errorMessage);
       }
     }
   }
 
   void login(String email, String password) async {
     try {
-      await auth.signInWithEmailAndPassword(
+      UserCredential myUser = await auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      showSnackbar('Login berhasil!');
+      if (myUser.user!.emailVerified) {
+        showSnackbar('Login berhasil!');
 
-      Get.offAllNamed(Routes.NAVIGATION);
+        Get.offAllNamed(Routes.NAVIGATION);
+      } else {
+        Get.defaultDialog(
+            title: "Verifikasi Email",
+            middleText:
+                "Anda Perlu Memverifikasi Email Terlebih Dahulu, Apakah Anda Ingin Verivikasi Kembali ?",
+            onConfirm: () async {
+              await myUser.user!.sendEmailVerification();
+              Get.back();
+            },
+            textConfirm: "Kirim Ulang Verifikasi Email",
+            textCancel: "kembali");
+      }
     } catch (e) {
       print('error accured $e');
       // Handle specific error messages
@@ -78,7 +111,7 @@ class AuthController extends GetxController {
             errorMessage = 'Email atau password tidak valid.';
             break;
         }
-        showSnackbar1(errorMessage);
+        showSnackbar2(errorMessage);
       }
     }
   }

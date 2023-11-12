@@ -115,7 +115,7 @@ class LoginView extends GetView<LoginController> {
                                 return TextField(
                                   controller: controller.passC,
                                   obscureText:
-                                      !controller.isPasswordVisible.value,
+                                      controller.isPasswordVisible.value,
                                   decoration: InputDecoration(
                                     hintText: controller.isPasswordEmpty.value
                                         ? 'Password'
@@ -127,8 +127,8 @@ class LoginView extends GetView<LoginController> {
                                       },
                                       child: Icon(
                                         controller.isPasswordVisible.value
-                                            ? Icons.visibility
-                                            : Icons.visibility_off,
+                                            ? Icons.visibility_off
+                                            : Icons.visibility,
                                         color: Colors.grey,
                                       ),
                                     ),
