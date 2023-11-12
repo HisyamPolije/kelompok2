@@ -8,28 +8,53 @@ class AuthController extends GetxController {
 
   Stream<User?> get streamAuthStatus => auth.authStateChanges();
 
+  void showSnackbar(String message) {
+    Get.snackbar(
+      'Pemberitahuan',
+      message,
+      snackPosition: SnackPosition.TOP,
+      backgroundColor: Colors.green,
+      colorText: Colors.white,
+    );
+  }
+
+  void showSnackbar1(String message) {
+    Get.snackbar(
+      'Peringatan',
+      message,
+      snackPosition: SnackPosition.TOP,
+      backgroundColor: Colors.red,
+      colorText: Colors.white,
+    );
+  }
+
   void register(String username, String email, String password) async {
     try {
       await auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+      // Registrasi berhasil, tampilkan Snackbar
+      showSnackbar('Registrasi berhasil!');
+
       Get.offAllNamed(Routes.LOGIN);
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        Get.snackbar(
-          'Register Error',
-          'The password provided is too weak.',
-          backgroundColor: Colors.red,
-          snackPosition: SnackPosition.TOP,
-        );
-      } else if (e.code == 'email-already-in-use') {
-        Get.snackbar(
-          'Register Error',
-          'The email is already in use.',
-          backgroundColor: Colors.red,
-          snackPosition: SnackPosition.TOP,
-        );
+    } catch (e) {
+      print('error accured $e');
+      // Handle specific error messages
+      if (e is FirebaseAuthException) {
+        String errorMessage = '';
+        switch (e.code) {
+          case 'email-already-in-use':
+            errorMessage = 'Email sudah digunakan.';
+            break;
+          case 'weak-password':
+            errorMessage = 'Password terlalu lemah.';
+            break;
+          case 'invalid-email':
+            errorMessage = 'Format email tidak valid.';
+            break;
+        }
+        showSnackbar1(errorMessage);
       }
     }
   }
@@ -40,22 +65,20 @@ class AuthController extends GetxController {
         email: email,
         password: password,
       );
+      showSnackbar('Login berhasil!');
+
       Get.offAllNamed(Routes.NAVIGATION);
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        Get.snackbar(
-          'Login Error',
-          'No user found for that email.',
-          backgroundColor: Colors.red,
-          snackPosition: SnackPosition.TOP,
-        );
-      } else if (e.code == 'wrong-password') {
-        Get.snackbar(
-          'Login Error',
-          'Wrong password provided for that user.',
-          backgroundColor: Colors.red,
-          snackPosition: SnackPosition.TOP,
-        );
+    } catch (e) {
+      print('error accured $e');
+      // Handle specific error messages
+      if (e is FirebaseAuthException) {
+        String errorMessage = '';
+        switch (e.code) {
+          case 'INVALID_LOGIN_CREDENTIALS':
+            errorMessage = 'Email atau password tidak valid.';
+            break;
+        }
+        showSnackbar1(errorMessage);
       }
     }
   }
