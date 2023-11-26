@@ -55,7 +55,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.HUMIDITY,
-      page: () => const HumidityView(),
+      page: () => HumidityView(),
       binding: HumidityBinding(),
     ),
     GetPage(
