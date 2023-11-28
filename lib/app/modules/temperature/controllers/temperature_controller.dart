@@ -12,9 +12,9 @@ class TemperatureController extends GetxController {
       final dynamic value = event.snapshot.value;
       if (value != null && value is Map) {
         sensorData.value = Map<String, dynamic>.from(value);
-        if (sensorData['dht11'] != null &&
-            sensorData['dht11']['temp'] != null &&
-            sensorData['dht11']['temp'] >= 30) {}
+        // if (sensorData['dht11'] != null &&
+        //     sensorData['dht11']['temp'] != null &&
+        //     sensorData['dht11']['temp'] >= 30) {}
       }
     });
   }

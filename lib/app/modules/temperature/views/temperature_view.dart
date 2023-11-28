@@ -16,7 +16,7 @@ class TemperatureView extends GetView<TemperatureController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('TemperatureView'),
+        title: const Text('TEMPERATURE'),
         centerTitle: true,
         actions: [
           IconButton(
@@ -30,7 +30,14 @@ class TemperatureView extends GetView<TemperatureController> {
         var temperatureValue =
             realtimeController.sensorData['dht11']?['temp'] ?? 'N/A';
 
-        // double fahrenheitValue = (temperatureValue * 9/5) + 32;
+        double fahrenheitValue = (temperatureGauge * 9 / 5) + 32;
+        String formattedFahrenheitValue = fahrenheitValue.toStringAsFixed(2);
+
+        double reamurValue = (temperatureGauge * 4 / 5);
+        String formattedReamurValue = reamurValue.toStringAsFixed(2);
+
+        double kelvinValue = (temperatureGauge + 273.15);
+        String formattedKelvinValue = kelvinValue.toStringAsFixed(2);
 
         return Padding(
           padding: const EdgeInsets.only(top: 50, left: 8, right: 8),
@@ -62,6 +69,8 @@ class TemperatureView extends GetView<TemperatureController> {
                     pointers: <GaugePointer>[
                       NeedlePointer(
                         value: temperatureGauge,
+                        enableAnimation: true,
+                        animationDuration: 200,
                         needleStartWidth: 1,
                         needleEndWidth: 3,
                         knobStyle: const KnobStyle(
@@ -111,7 +120,7 @@ class TemperatureView extends GetView<TemperatureController> {
                         width: 150.0,
                         height: 50,
                         decoration: const BoxDecoration(
-                            color: Colors.white,
+                            color: Color.fromARGB(255, 21, 29, 48),
                             border: Border(
                               top: BorderSide(color: Colors.black, width: 2.0),
                               left: BorderSide(color: Colors.black, width: 2.0),
@@ -129,8 +138,11 @@ class TemperatureView extends GetView<TemperatureController> {
                           children: [
                             Text(
                               'CELCIUS',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 14),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontFamily: 'poppins',
+                                  fontWeight: FontWeight.w400),
                             ),
                           ],
                         ),
@@ -147,13 +159,15 @@ class TemperatureView extends GetView<TemperatureController> {
                               bottomRight: Radius.circular(20.0),
                             )),
                         margin: const EdgeInsets.only(top: 0),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'CELCIUS',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 14),
+                              '$temperatureValue °C',
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -167,7 +181,7 @@ class TemperatureView extends GetView<TemperatureController> {
                         width: 150.0,
                         height: 50,
                         decoration: const BoxDecoration(
-                            color: Colors.white,
+                            color: Color.fromARGB(255, 21, 29, 48),
                             border: Border(
                               top: BorderSide(color: Colors.black, width: 2.0),
                               left: BorderSide(color: Colors.black, width: 2.0),
@@ -184,9 +198,12 @@ class TemperatureView extends GetView<TemperatureController> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'CELCIUS',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 14),
+                              'FAHRENHEIT',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontFamily: 'poppins',
+                                  fontWeight: FontWeight.w400),
                             ),
                           ],
                         ),
@@ -203,13 +220,15 @@ class TemperatureView extends GetView<TemperatureController> {
                               bottomRight: Radius.circular(20.0),
                             )),
                         margin: const EdgeInsets.only(top: 0),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'CELCIUS',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 14),
+                              '$formattedFahrenheitValue °F',
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -228,7 +247,7 @@ class TemperatureView extends GetView<TemperatureController> {
                         width: 150.0,
                         height: 50,
                         decoration: const BoxDecoration(
-                            color: Colors.white,
+                            color: Color.fromARGB(255, 21, 29, 48),
                             border: Border(
                               top: BorderSide(color: Colors.black, width: 2.0),
                               left: BorderSide(color: Colors.black, width: 2.0),
@@ -245,9 +264,12 @@ class TemperatureView extends GetView<TemperatureController> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'CELCIUS',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 14),
+                              'REAMUR',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontFamily: 'poppins',
+                                  fontWeight: FontWeight.w400),
                             ),
                           ],
                         ),
@@ -264,13 +286,15 @@ class TemperatureView extends GetView<TemperatureController> {
                               bottomRight: Radius.circular(20.0),
                             )),
                         margin: const EdgeInsets.only(top: 0),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'CELCIUS',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 14),
+                              '$formattedReamurValue °R',
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -284,7 +308,7 @@ class TemperatureView extends GetView<TemperatureController> {
                         width: 150.0,
                         height: 50,
                         decoration: const BoxDecoration(
-                            color: Colors.white,
+                            color: Color.fromARGB(255, 21, 29, 48),
                             border: Border(
                               top: BorderSide(color: Colors.black, width: 2.0),
                               left: BorderSide(color: Colors.black, width: 2.0),
@@ -301,9 +325,12 @@ class TemperatureView extends GetView<TemperatureController> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'CELCIUS',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 14),
+                              'KELVIN',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontFamily: 'poppins',
+                                  fontWeight: FontWeight.w400),
                             ),
                           ],
                         ),
@@ -320,13 +347,15 @@ class TemperatureView extends GetView<TemperatureController> {
                               bottomRight: Radius.circular(20.0),
                             )),
                         margin: const EdgeInsets.only(top: 0),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'CELCIUS',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 14),
+                              '$formattedKelvinValue °K',
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),

@@ -25,9 +25,7 @@ class NavigationView extends GetView<NavigationController> {
             index: controller.selectedIndex.value, children: screens),
       ),
       bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          color: Color.fromARGB(255, 21, 29, 48),
-        ),
+        decoration: const BoxDecoration(color: Color.fromARGB(255, 21, 29, 48)),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: GNav(
