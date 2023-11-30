@@ -53,7 +53,7 @@ class LoginView extends GetView<LoginController> {
               ),
             ),
             Container(
-              height: 753.5,
+              height: 756.6,
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(

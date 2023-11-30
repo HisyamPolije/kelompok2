@@ -16,16 +16,50 @@ class TemperatureView extends GetView<TemperatureController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('TEMPERATURE'),
+        title: const Text(
+          'TEMPERATURE',
+          style: TextStyle(
+              color: Colors.black,
+              fontSize: 25,
+              fontFamily: 'novasquare',
+              fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
         actions: [
           IconButton(
-              onPressed: () => authC.logout(), icon: const Icon(Icons.logout))
+            onPressed: () => authC.logout(),
+            icon: const Icon(Icons.logout),
+          ),
         ],
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(4.0),
+          child: Container(
+            decoration: const BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: Colors.black,
+                  width: 2.0,
+                ),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey, // Warna bayangan
+                  blurRadius: 5.0, // Jarak blur
+                  offset: Offset(0, 3), // Posisi bayangan
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
       body: Obx(() {
-        double temperatureGauge =
-            realtimeController.sensorData['dht11']?['temp'] ?? 0.0;
+        dynamic temperatureData =
+            realtimeController.sensorData['dht11']?['temp'];
+        double temperatureGauge = temperatureData is int
+            ? temperatureData.toDouble()
+            : (temperatureData ?? 0.0);
 
         var temperatureValue =
             realtimeController.sensorData['dht11']?['temp'] ?? 'N/A';
@@ -40,7 +74,7 @@ class TemperatureView extends GetView<TemperatureController> {
         String formattedKelvinValue = kelvinValue.toStringAsFixed(2);
 
         return Padding(
-          padding: const EdgeInsets.only(top: 50, left: 8, right: 8),
+          padding: const EdgeInsets.only(top: 30, left: 8, right: 8),
           child: Column(
             children: [
               Center(
@@ -97,7 +131,7 @@ class TemperatureView extends GetView<TemperatureController> {
                           '$temperatureValue °C',
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                            fontSize: 25,
                           ),
                         ),
                       ),
@@ -364,6 +398,22 @@ class TemperatureView extends GetView<TemperatureController> {
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 29,
+              ),
+              const Text(
+                'Copyright',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontFamily: 'poppins',
+                    fontWeight: FontWeight.bold),
+              ),
+              const Text(
+                'Kelompok 2 TempHumid 2023',
+                style: TextStyle(
+                    color: Colors.black, fontSize: 14, fontFamily: 'poppins'),
+              )
             ],
           ),
         );

@@ -16,6 +16,7 @@ dependencies:
   firebase_auth: ^4.12.1
   syncfusion_flutter_gauges: ^23.1.44
   firebase_database: ^10.3.4
+  fl_chart: ^0.65.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -48,4 +49,13 @@ flutter:
         - asset: fonts/poppins_semibolditalic.ttf
         - asset: fonts/poppins_thin.ttf
         - asset: fonts/poppins_thinitalic.ttf
+    - family: novasquare
+      fonts:
+        - asset: fonts/NovaSquare-Regular.ttf
+    - family: agbalumo
+      fonts:
+        - asset: fonts/Agbalumo-Regular.ttf
+    - family: playpen
+      fonts:
+        - asset: fonts/PlaypenSans-VariableFont_wght.ttf
   uses-material-design: true

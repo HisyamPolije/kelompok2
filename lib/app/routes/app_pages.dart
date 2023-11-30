@@ -60,12 +60,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.HISTORY,
-      page: () => const HistoryView(),
+      page: () => HistoryView(),
       binding: HistoryBinding(),
     ),
     GetPage(
       name: _Paths.ABOUT,
-      page: () => const AboutView(),
+      page: () => AboutView(),
       binding: AboutBinding(),
     ),
     GetPage(

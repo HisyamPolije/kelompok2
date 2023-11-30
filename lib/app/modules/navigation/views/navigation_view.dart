@@ -14,8 +14,8 @@ class NavigationView extends GetView<NavigationController> {
   final screens = [
     TemperatureView(),
     HumidityView(),
-    const HistoryView(),
-    const AboutView()
+    HistoryView(),
+    AboutView()
   ];
   @override
   Widget build(BuildContext context) {
