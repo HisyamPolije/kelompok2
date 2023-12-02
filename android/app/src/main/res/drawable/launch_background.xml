@@ -9,7 +9,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/splash6"
+            android:src="@drawable/splash8"
             android:layout_width="50dp"
             android:layout_height="50dp"
             />

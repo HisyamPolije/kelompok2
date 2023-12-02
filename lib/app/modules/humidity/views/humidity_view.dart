@@ -55,13 +55,13 @@ class HumidityView extends GetView<HumidityController> {
         ),
       ),
       body: Obx(() {
-        dynamic humidityData = realtimeController.sensorData['dht11']?['humi'];
+        dynamic humidityData = realtimeController.sensorDht11['dht11']?['humi'];
         double humidityGauge = humidityData is int
             ? humidityData.toDouble()
             : (humidityData ?? 0.0);
 
         var humidityValue =
-            realtimeController.sensorData['dht11']?['humi'] ?? 'N/A';
+            realtimeController.sensorDht11['dht11']?['humi'] ?? 'N/A';
 
         // Status yang akan keluar jika data yang masuk berubah
         String getHumidityStatus(double humidityValue) {

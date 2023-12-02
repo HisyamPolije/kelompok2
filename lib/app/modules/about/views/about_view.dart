@@ -69,7 +69,7 @@ class AboutView extends GetView<AboutController> {
             Padding(
               padding: EdgeInsets.only(top: 15, right: 15, left: 15),
               child: Text(
-                'Aplikasi ini dibuat oleh :\n Muhammad Hisyamuddin (E32222650) sebagai Leader,\n dan 3 orang anggota lainya yaitu :\n 1.Ega Saputra Wicaksana (E32222485).\n 2. Imam Ghazali Munir (E32222855).\n 3. Nur Naim (E32222...).',
+                'Aplikasi ini dibuat oleh :\n Muhammad Hisyamuddin (E32222650) sebagai Leader,\n dan 3 orang anggota lainya yaitu :\n 1.Ega Saputra Wicaksana (E32222485).\n 2. Imam Ghazali Munir (E32222855).\n 3. Nur Naim (E32222877).',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontFamily: 'playpen',

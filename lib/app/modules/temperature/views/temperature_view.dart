@@ -56,13 +56,13 @@ class TemperatureView extends GetView<TemperatureController> {
       ),
       body: Obx(() {
         dynamic temperatureData =
-            realtimeController.sensorData['dht11']?['temp'];
+            realtimeController.sensorDht11['dht11']?['temp'];
         double temperatureGauge = temperatureData is int
             ? temperatureData.toDouble()
             : (temperatureData ?? 0.0);
 
         var temperatureValue =
-            realtimeController.sensorData['dht11']?['temp'] ?? 'N/A';
+            realtimeController.sensorDht11['dht11']?['temp'] ?? 'N/A';
 
         double fahrenheitValue = (temperatureGauge * 9 / 5) + 32;
         String formattedFahrenheitValue = fahrenheitValue.toStringAsFixed(2);
